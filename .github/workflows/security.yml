@@ -1,7 +1,7 @@
 name: Security Pipeline
 
 on: [push]
-
+# triggering run
 jobs:
   sast_scan:
     runs-on: ubuntu-latest
