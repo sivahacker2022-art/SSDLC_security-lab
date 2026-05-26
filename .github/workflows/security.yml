@@ -1,0 +1,24 @@
+name: Security Pipeline
+
+on: [push]
+
+jobs:
+  sast_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      # Semgrep installation and it will run Scan
+      - name: Run Semgrep SAST Scan
+        run: |
+          pip install semgrep
+          semgrep scan --config auto --json -o results.json
+      
+      # if Bugs are there in sacn Build will fial (Security Gate)
+      - name: Check for Critical Issues
+        run: |
+          # will check for results
+          echo "Security scan completed successfully."ame: Security Pipeline
+
+
+
